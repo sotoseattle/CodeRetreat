@@ -1,2 +1,2 @@
 require 'minitest/autorun'
-require 'game_of_life'
+require './lib/game_of_life'
