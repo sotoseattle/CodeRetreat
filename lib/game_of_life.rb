@@ -1,12 +1,11 @@
 require_relative './cell'
+require_relative './chart'
 
 class GOL
+  attr_reader :living_cells
+
   def initialize
     @living_cells = []
-  end
-
-  def living_cells
-    @living_cells.size
   end
 
   def add(another_cell)
@@ -20,4 +19,12 @@ class GOL
     deceased.each(&:suicide!)
     @living_cells = survivors
   end
+
+  def visualization
+    chart = Chart.new(living_cells.map(&:location))
+    chart.to_2D
+  end
+
+  private
+
 end
