@@ -15,6 +15,10 @@ class Location
   end
 
   def is_adjacent?(other)
-    adjacents.include?([other.x, other.y])
+    adjacents.include?(other.to_a)
+  end
+
+  def to_a
+    [@x, @y]
   end
 end

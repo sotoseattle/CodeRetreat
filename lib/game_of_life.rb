@@ -12,6 +12,7 @@ class GOL
   def add(another_cell)
     @living_cells.each { |cell| cell.connect_with(another_cell) }
     @living_cells << another_cell
+    self
   end
 
   def tick

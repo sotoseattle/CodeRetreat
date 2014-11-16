@@ -9,7 +9,7 @@ class Cell
   end
 
   def survives?
-    neighbors_alive == (2 || 3)
+    neighbors_alive == 2 || neighbors_alive == 3
   end
 
   def connect_with(other)
@@ -17,11 +17,16 @@ class Cell
       @neighbors << other unless @neighbors.include?(other)
       other.neighbors << self unless other.neighbors.include?(self)
     end
+    self
   end
 
   def suicide!
     @neighbors.each { |other| other.remove(self) }
     @neighbors = []
+  end
+
+  def to_s
+    @location.to_a.to_s
   end
 
   protected
