@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe 'Cell' do
-  let(:cell_at_00) { Cell.new(at: Location.new(0, 0)) }
+  let(:cell_at_00) { new_cell_at(0, 0) }
 
   describe 'A new cell' do
     it 'is created at a specific location' do
@@ -20,14 +20,14 @@ describe 'Cell' do
 
   describe '#connect_with' do
     it 'two cells can be connected to one another if adjacent' do
-      d = Cell.new(at: Location.new(0, 1))
+      d = new_cell_at(0, 1)
       cell_at_00.connect_with(d)
       cell_at_00.neighbors.must_include d
       d.neighbors.must_include cell_at_00
     end
 
     it 'two cells wont be connected to one another if set apart' do
-      d = Cell.new(at: Location.new(0, 2))
+      d = new_cell_at(0, 2)
       cell_at_00.connect_with(d)
       cell_at_00.neighbors.wont_include d
       d.neighbors.wont_include cell_at_00
@@ -36,9 +36,9 @@ describe 'Cell' do
 
   describe '#suicide!' do
     before(:each) do
-      @a = Cell.new(at: Location.new(0, 1))
-      @b = Cell.new(at: Location.new(1, 1))
-      @c = Cell.new(at: Location.new(1, 0))
+      @a = new_cell_at(0, 1)
+      @b = new_cell_at(1, 1)
+      @c = new_cell_at(1, 0)
       cell_at_00.connect_with(@a).connect_with(@b).connect_with(@c)
     end
 
