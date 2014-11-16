@@ -16,8 +16,8 @@ class GOL
   end
 
   def tick
-    survivors, deceased = @living_cells.partition { |cell| cell.survives? }
-    deceased.each {|c| c.suicide! }
+    survivors, deceased = @living_cells.partition(&:survives?)
+    deceased.each(&:suicide!)
     @living_cells = survivors
   end
 end

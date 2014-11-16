@@ -7,14 +7,14 @@ class Location
   end
 
   def ==(other)
-    self.x == other.x && self.y == other.y
+    x == other.x && y == other.y
   end
 
   def adjacents
-    [x+1, x, x-1].product([y-1, y, y+1]).reject { |a| a == [x,y] }
+    [x + 1, x, x - 1].product([y - 1, y, y + 1]).reject { |a| a == [x, y] }
   end
 
-  def is_adjacent?(other)
+  def adjacent?(other)
     adjacents.include?(other.to_a)
   end
 

@@ -10,14 +10,14 @@ describe 'Location' do
     end
   end
 
-  describe '#adjacents and #is_adjacent?' do
+  describe '#adjacents and #adjacent?' do
     it { Location.new(rand, rand).adjacents.size.must_equal 8 }
-    it { loc.is_adjacent?(Location.new(0,1)).must_equal true }
-    it { loc.is_adjacent?(Location.new(2,1)).must_equal false }
+    it { loc.adjacent?(Location.new(0, 1)).must_equal true }
+    it { loc.adjacent?(Location.new(2, 1)).must_equal false }
   end
 
   describe '#==' do
-    it { loc.must_equal Location.new(0,0) }
-    it { loc.wont_equal Location.new(0,1) }
+    it { loc.must_equal Location.new(0, 0) }
+    it { loc.wont_equal Location.new(0, 1) }
   end
 end

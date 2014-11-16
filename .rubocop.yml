@@ -1,0 +1,11 @@
+Documentation:
+  Enabled: false
+
+LineLength:
+  Max: 80
+
+AllCops:
+  Include:
+    - Gemfile
+  Exclude:
+    - Guardfile

@@ -13,7 +13,7 @@ class Cell
   end
 
   def connect_with(other)
-    if is_adjacent?(other)
+    if adjacent?(other)
       @neighbors << other unless @neighbors.include?(other)
       other.neighbors << self unless other.neighbors.include?(self)
     end
@@ -41,7 +41,7 @@ class Cell
     @neighbors.count
   end
 
-  def is_adjacent?(other)
-    location.is_adjacent?(other.location)
+  def adjacent?(other)
+    location.adjacent?(other.location)
   end
 end
