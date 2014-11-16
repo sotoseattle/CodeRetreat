@@ -26,5 +26,12 @@ Initially I though that the tests were going to be written in stone, once writte
 
 (developing...)
 
+### Emergence
+
+My biggest pleasure in this exercise, and what I wanted to check in the first place, was the ability of a code base emerging from t...
+
+Started only considering living cells that die /live
+not locations that become alive
+
 
 

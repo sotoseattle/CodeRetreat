@@ -24,7 +24,4 @@ class GOL
     chart = Chart.new(living_cells.map(&:location))
     chart.to_2D
   end
-
-  private
-
 end

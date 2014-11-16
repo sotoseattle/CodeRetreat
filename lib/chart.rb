@@ -1,23 +1,26 @@
 require_relative './location'
 
 class Chart
-  def initialize(bunch_of_locations)
-    @locations = bunch_of_locations
+  def initialize(bunch_of_locations=[])
+    @locations = Array.new(bunch_of_locations)
+    @bottom_left = @top_right = nil
+    @width  = @heigth = 0
+
+    unless @locations.empty?
+      @bottom_left, @top_right = frame
+      @width  = @top_right.x - @bottom_left.x + 1
+      @heigth = @top_right.y - @bottom_left.y + 1
+    end
   end
 
   def to_2D
     return '' if @locations.empty?
-
-    bottom_left, top_right = frame
-    width  = top_right.x - bottom_left.x + 1
-    heigth = top_right.y - bottom_left.y + 1
-
-    arr = ['.'] * width * heigth
-
-    @locations.each { |loc| arr[loc.x * width + loc.y] = 'X' }
-
-    arr.each_slice(width).map { |sub| sub << "\n" }.join
+    arr = ['.'] * @width * @heigth
+    @locations.each { |loc| arr[loc.x * @width + loc.y] = 'X' }
+    arr.each_slice(@width).map { |sub| sub << "\n" }.join
   end
+
+  private
 
   def frame
     bottom_left_corner = Location.new(Float::INFINITY, Float::INFINITY)
