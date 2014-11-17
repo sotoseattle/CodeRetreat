@@ -10,10 +10,8 @@ describe 'Location' do
     end
   end
 
-  describe '#adjacents and #adjacent?' do
+  describe '#adjacents' do
     it { Location.new(rand, rand).adjacents.size.must_equal 8 }
-    it { loc.adjacent?(Location.new(0, 1)).must_equal true }
-    it { loc.adjacent?(Location.new(2, 1)).must_equal false }
   end
 
   describe '#==' do

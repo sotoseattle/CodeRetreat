@@ -24,7 +24,7 @@ This narrowing is like a gravitational pull. Happens without being aware. The wa
 
 Initially I though that the tests were going to be written in stone, once written they would remain essentially the same (not considering small refactorings to input/output as we add features). I was wrong. I have found myself refactoring tests as much as code. What I though should belong to Cell ended up in a Location object, and that forces the test itself to change places. Tests were written, deleted, moved, and refactored continuously. Tests become Code.
 
-### Emergence
+### Emergence?
 
 My biggest pleasure in this exercise, and what I wanted to evaluate in the first place, was the ability of the process to allow good code to emerge.
 
@@ -32,7 +32,46 @@ I started only considering living cells that live and die because of the proximi
 
 Now, for the fun part. Given this code, the result of the aforementioned process. Where I have taken good care to keep things encapsulated, apart, to each his own according to his responsibilities and capabilities. How hard will it be to add the functionality of certain locations becoming populated by new cells due to proximity of other living cells?
 
-(...)
+### Close, but no cigar!
 
+Well, no. It didn't save me the pain of a big refactoring.
 
+Once I had to consider spawning locations the whole design fell to pieces. I was tracking living cells and the Cell class had responsibility over knowing its neighbors. Now that I needed to find a way to encompass both, tracking already living cells and looking for fertile locations where new cells could come to life, I saw that keeping track of and analyzing locations could achieve the both things better.
 
+I could see 3 ways to go about it:
+
+1. Topographically, we only consider locations, like a field potential where alive is 100%, dead is 0%, and spawning is in-between.
+2. Biologically, with a graph made of cells, which I traverse to decide if I create new ones.
+3. Topo for spawning locations and bio for living cells. May make the most natural sense, since spawning locations and living cells are different things, but I cannot see that is worth the extra level of complexity. A more complex setting could make me choose this route.
+
+This high level understanding of the design could have been taken head-on from the start, saving me the extra miles walked down the cell path, to only retrace and re-code as location based.
+
+At the same time, this process allowed me to never get stuck because of the complexity of the problem. You always advance, even if it means taking 2 steps forward and one back. If time is not a constraint this way feels natural and it flows.
+
+Another benefit is that you can always relay on the test previously written. This is an immense aid and a boost to the confidence that the new route (big refactoring) works.
+
+A final benefit is that the continuous refactoring to make its language more natural, makes you end up with a minimized code and a deep understanding of what everything does.
+
+### Disclaimer
+
+This work is left unfinished. The chart class, which visualizes the board, is a bit messy and could benefit from refactoring (maybe set inside World?).
+
+More tests are needed. I still need to work on really covering all possible scenarios for each class. I started strong but I have the feeling that I dropped the ball a bit by the end.
+
+Other refactorings are possible and I may come back to it later on to perfect it, or to even add new features as per the Code Retreat mods and ideas.
+
+## Author
+
+- Javier Soto
+
+## License
+
+The MIT License
+
+Copyright (c) 2014 Javier Soto
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.

@@ -1,6 +1,8 @@
 require 'spec_helper'
 
 describe 'Chart' do
+  let(:w) { World.new }
+
   describe 'initialize and #frame' do
     it 'without locations there is not much of a chart' do
       c = Chart.new
@@ -12,9 +14,9 @@ describe 'Chart' do
 
       bunch_of_locations = 5.times.map { Location.new(rand(100) + 10, rand(100) + 10) }
       bunch_of_locations << known_min << known_max
-      bunch_of_locations.shuffle!
+      bunch_of_locations.shuffle.each { |loc| w.add(loc) }
 
-      chart = Chart.new(bunch_of_locations)
+      chart = Chart.new(w)
       chart.instance_variable_get(:@bottom_left).must_equal known_min
       chart.instance_variable_get(:@top_right).must_equal known_max
     end
@@ -22,14 +24,15 @@ describe 'Chart' do
 
   describe '#to_2D' do
     it 'an empty chart has only dots' do
-      bunch_of_locations = []
-      chart = Chart.new(bunch_of_locations)
+      chart = Chart.new(w)
       chart.to_2D.must_equal ''
     end
 
     it 'builds a stringify 2D map from a set of locations' do
-      bunch_of_locations = [*0..5].zip([*0..5]).map { |pair| Location.new(*pair) }
-      chart = Chart.new(bunch_of_locations)
+      bunch_of_locations = [*0..5].zip([*0..5]).each do |coord|
+        w.add(Location.new(*coord))
+      end
+      chart = Chart.new(w)
       chart.to_2D.must_equal "X.....\n.X....\n..X...\n...X..\n....X.\n.....X\n"
     end
   end
