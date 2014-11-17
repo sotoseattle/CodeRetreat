@@ -1,6 +1,7 @@
 CODE RETREAT
 ============
 
+[![Travis CI](https://travis-ci.org/sotoseattle/CodeRetreat.svg)](https://travis-ci.org/sotoseattle/CodeRetreat.svg)
 [![Coverage Status](https://img.shields.io/coveralls/sotoseattle/CodeRetreat.svg)](https://coveralls.io/r/sotoseattle/CodeRetreat)
 
 Last Saturday 15, Nov I participated in the Global day of Code Retreat 2014. Although I could only join for half a day, it was an intense learning experience from which I benefited much.
