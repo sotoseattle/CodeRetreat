@@ -1,10 +1,4 @@
-class Location
-  attr_accessor :x, :y
-
-  def initialize(x, y)
-    @x, @y = x, y
-  end
-
+Location = Struct.new(:x, :y) do
   def ==(other)
     to_a == other.to_a
   end
@@ -15,10 +9,6 @@ class Location
           .map { |coords| Location.new(*coords) }
     adj.delete self
     adj
-  end
-
-  def to_a
-    [x, y]
   end
 
   protected
