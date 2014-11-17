@@ -1,9 +1,22 @@
-CODE RETREAT
-============
+GAME of LIFE & CODE RETREAT
+===========================
 
-An exercise to apply what I learned this Saturday in the Global day of Code Retreat 2014.
+Last Saturday 15, Nov I participated in the Global day of Code Retreat 2014. Although I could only join for half a day, it was an intense learning experience from which I benefited much.
 
-I am trying to code the Game Of Life following the principles of simple design, and I recording the results and my reflections on the process for my own sake. (Sad way to spend a weekend? maybe, though so far so good.)
+This code is an exercise to apply what I learned in terms of 4 Principles of Simple Design. And these notes are my reflections on the process for my own sake.
+
+Table of Contents
+-----------------
+
+- [Learning to Fly](#learning-to-fly)
+- [Gravity Pull](#gravity-pull)
+- [Writing Test Miss-conception](#writing-test-miss-conception)
+- [Advance, Retreat, Pivot, Repeat, Somersault, WTF?](#advance,-retreat,-pivot,-repeat,-somersault,-wtf?)
+- [Emergence?](#emergence?)
+- [Close, but no cigar!](#close,-but-no-cigar!)
+- [Disclaimer](#disclaimer)
+- [Author](#author)
+- [License](#license)
 
 ### Learning to Fly
 
@@ -14,7 +27,7 @@ First and foremost I am not only starting every iteration writing the tests, but
 
 There is great tension between these forces, between flying high without getting lost in space, and flying low and hitting the rooftops.
 
-### Gravity pull
+### Gravity Pull
 
 Another difficulty I have seen. By passing tests and only passing them, without regard for the overall design from the get go, I tend to find myself thinking in a tunnel, with a narrow scope of the problem (pass the test). Like doing white-board challenges, way too close to what I am writing in the white-board, unable to see and play with the whole picture.
 
@@ -23,6 +36,12 @@ This narrowing is like a gravitational pull. Happens without being aware. The wa
 ### Writing Test Miss-conception
 
 Initially I though that the tests were going to be written in stone, once written they would remain essentially the same (not considering small refactorings to input/output as we add features). I was wrong. I have found myself refactoring tests as much as code. What I though should belong to Cell ended up in a Location object, and that forces the test itself to change places. Tests were written, deleted, moved, and refactored continuously. Tests become Code.
+
+### Advance, Retreat, Pivot, Repeat, Somersault, WTF?
+
+Imagine the situation: you have a test to pass so you start coding to find out that you are going to need some intermediate methods. What do you do, retreat and write test for these intermediate methods? Or plunge ahead and implement them to pass the original? Which means you will need to write tests for that interim method a posterior? I have found that the process is not clear cut or linear and that you need to keep a loose attitude about it, making compromises, keeping agile the writing of your test and methods.
+
+The same happens if, in the middle of the process, you want to explore a line of thought. You may want to play in the sandbox and not write a test a priori about something that may not be used or whose utility is more about writing an idea into code so a better one emerges or it clarifies a whole concept.
 
 ### Emergence?
 
@@ -40,7 +59,7 @@ Once I had to consider spawning locations the whole design fell to pieces. I was
 
 I could see 3 ways to go about it:
 
-1. Topographically, we only consider locations, like a field potential where alive is 100%, dead is 0%, and spawning is in-between.
+1. Topologically, we only consider locations, like a field potential where alive is 100%, dead is 0%, and spawning is in-between.
 2. Biologically, with a graph made of cells, which I traverse to decide if I create new ones.
 3. Topo for spawning locations and bio for living cells. May make the most natural sense, since spawning locations and living cells are different things, but I cannot see that is worth the extra level of complexity. A more complex setting could make me choose this route.
 
@@ -54,9 +73,9 @@ A final benefit is that the continuous refactoring to make its language more nat
 
 ### Disclaimer
 
-This work is left unfinished. The chart class, which visualizes the board, is a bit messy and could benefit from refactoring (maybe set inside World?).
+This work is left unfinished. The GOL class should have a method 'play', a way to set the initial state of living cells from a text file (for example), and a way to visualize the evolution of the game in a fixed referenced window. The chart class itself, which visualizes the board, is messy and would benefit from refactoring.
 
-More tests are needed. I still need to work on really covering all possible scenarios for each class. I started strong but I have the feeling that I dropped the ball a bit by the end.
+Absolutely more tests are needed. I still need to work on really covering all possible scenarios for each class. I started strong but I have the feeling that I dropped the ball a bit by the end.
 
 Other refactorings are possible and I may come back to it later on to perfect it, or to even add new features as per the Code Retreat mods and ideas.
 
