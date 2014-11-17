@@ -1,9 +1,11 @@
-GAME of LIFE & CODE RETREAT
-===========================
+CODE RETREAT
+============
+
+[![Coverage Status](https://img.shields.io/coveralls/kejadlen/game_of_life.svg)](https://coveralls.io/r/kejadlen/game_of_life)
 
 Last Saturday 15, Nov I participated in the Global day of Code Retreat 2014. Although I could only join for half a day, it was an intense learning experience from which I benefited much.
 
-This code is an exercise to apply what I learned in terms of 4 Principles of Simple Design. And these notes are my reflections on the process for my own sake.
+This code is an exercise to apply what I learned in terms of 4 Principles of Simple Design. The code is an implementation of the Game Of Life. These notes are my reflections on the process for my own sake.
 
 Table of Contents
 -----------------
