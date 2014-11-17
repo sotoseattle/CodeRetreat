@@ -11,8 +11,8 @@ Table of Contents
 - [Learning to Fly](#learning-to-fly)
 - [Gravity Pull](#gravity-pull)
 - [Writing Test Miss-conception](#writing-test-miss-conception)
-- [Advance, Retreat, Pivot, Repeat, Somersault, WTF?](#advance,-retreat,-pivot,-repeat,-somersault,-wtf?)
-- [Emergence?](#emergence?)
+- [Advance, Retreat, Pivot, Repeat, Somersault, WTF](#advance,-retreat,-pivot,-repeat,-somersault,-wtf)
+- [Emergence](#emergence)
 - [Close, but no cigar!](#close,-but-no-cigar!)
 - [Disclaimer](#disclaimer)
 - [Author](#author)
@@ -37,13 +37,13 @@ This narrowing is like a gravitational pull. Happens without being aware. The wa
 
 Initially I though that the tests were going to be written in stone, once written they would remain essentially the same (not considering small refactorings to input/output as we add features). I was wrong. I have found myself refactoring tests as much as code. What I though should belong to Cell ended up in a Location object, and that forces the test itself to change places. Tests were written, deleted, moved, and refactored continuously. Tests become Code.
 
-### Advance, Retreat, Pivot, Repeat, Somersault, WTF?
+### Advance, Retreat, Pivot, Repeat, Somersault, WTF
 
 Imagine the situation: you have a test to pass so you start coding to find out that you are going to need some intermediate methods. What do you do, retreat and write test for these intermediate methods? Or plunge ahead and implement them to pass the original? Which means you will need to write tests for that interim method a posterior? I have found that the process is not clear cut or linear and that you need to keep a loose attitude about it, making compromises, keeping agile the writing of your test and methods.
 
 The same happens if, in the middle of the process, you want to explore a line of thought. You may want to play in the sandbox and not write a test a priori about something that may not be used or whose utility is more about writing an idea into code so a better one emerges or it clarifies a whole concept.
 
-### Emergence?
+### Emergence
 
 My biggest pleasure in this exercise, and what I wanted to evaluate in the first place, was the ability of the process to allow good code to emerge.
 
