@@ -12,9 +12,9 @@ describe 'Chart' do
     it 'reframes a set of locations so all can be displayed' do
       known_min, known_max = Location.new(0, 2), Location.new(200, 300)
 
-      bunch_of_locations = 5.times.map { Location.new(rand(100) + 10, rand(100) + 10) }
-      bunch_of_locations << known_min << known_max
-      bunch_of_locations.shuffle.each { |loc| w.add(loc) }
+      locations = 5.times.map { Location.new(rand(100) + 10, rand(100) + 10) }
+      locations << known_min << known_max
+      locations.shuffle.each { |loc| w.add(loc) }
 
       chart = Chart.new(w)
       chart.instance_variable_get(:@bottom_left).must_equal known_min
@@ -22,18 +22,18 @@ describe 'Chart' do
     end
   end
 
-  describe '#to_2D' do
+  describe '#to_2d' do
     it 'an empty chart has only dots' do
       chart = Chart.new(w)
-      chart.to_2D.must_equal ''
+      chart.to_2d.must_equal ''
     end
 
     it 'builds a stringify 2D map from a set of locations' do
-      bunch_of_locations = [*0..5].zip([*0..5]).each do |coord|
+      [*0..5].zip([*0..5]).each do |coord|
         w.add(Location.new(*coord))
       end
       chart = Chart.new(w)
-      chart.to_2D.must_equal "X.....\n.X....\n..X...\n...X..\n....X.\n.....X\n"
+      chart.to_2d.must_equal "X.....\n.X....\n..X...\n...X..\n....X.\n.....X\n"
     end
   end
 end

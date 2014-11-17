@@ -26,6 +26,6 @@ class GOL
   end
 
   def visualization
-    Chart.new(@world).to_2D
+    Chart.new(@world).to_2d
   end
 end

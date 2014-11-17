@@ -6,14 +6,15 @@ class Location
   end
 
   def ==(other)
-    self.to_a == other.to_a
+    to_a == other.to_a
   end
   alias_method :eql?, :==
 
   def adjacents
-    [x + 1, x, x - 1].product([y - 1, y, y + 1])
-    .reject { |coords| coords == [x, y] }
-    .map{|coords| Location.new(*coords)}
+    adj = [x + 1, x, x - 1].product([y - 1, y, y + 1])
+          .map { |coords| Location.new(*coords) }
+    adj.delete self
+    adj
   end
 
   def to_a

@@ -21,41 +21,43 @@ describe 'grid' do
     it 'the perimeter expands as we add cells' do
       grid = empty_grid
       grid.send(:potential_perimeter).size.must_equal 0
-      grid.add(Location.new(0,0))
+      grid.add(Location.new(0, 0))
       grid.send(:potential_perimeter).size.must_equal 8
-      grid.add(Location.new(0,1))
+      grid.add(Location.new(0, 1))
       grid.send(:potential_perimeter).size.must_equal 10
-      grid.add(Location.new(1,1))
+      grid.add(Location.new(1, 1))
       grid.send(:potential_perimeter).size.must_equal 12
-      grid.add(Location.new(1,0))
+      grid.add(Location.new(1, 0))
       grid.send(:potential_perimeter).size.must_equal 12
     end
   end
 
   describe 'germinal_locations' do
     it '' do
-      empty_grid.add(Location.new(0,0))
+      empty_grid.add(Location.new(0, 0))
       empty_grid.germinal_locations.size.must_equal 0
     end
 
     it '' do
-      empty_grid.add(Location.new(0,0))
-      empty_grid.add(Location.new(0,1))
+      empty_grid.add(Location.new(0, 0))
+      empty_grid.add(Location.new(0, 1))
       empty_grid.germinal_locations.size.must_equal 0
     end
 
     it '' do
-      empty_grid.add(Location.new(0,0))
-      empty_grid.add(Location.new(0,1))
-      empty_grid.add(Location.new(1,0))
+      empty_grid.add(Location.new(0, 0))
+      empty_grid.add(Location.new(0, 1))
+      empty_grid.add(Location.new(1, 0))
       empty_grid.germinal_locations.size.must_equal 1
       empty_grid.germinal_locations.first.to_a.must_equal [1, 1]
     end
 
     it '' do
-      empty_grid.add(Location.new(0,0))
-      empty_grid.add(Location.new(0,1)); empty_grid.add(Location.new(0,-1))
-      empty_grid.add(Location.new(1,0)); empty_grid.add(Location.new(-1,0))
+      empty_grid.add(Location.new(0, 0))
+      empty_grid.add(Location.new(0, 1))
+      empty_grid.add(Location.new(0, -1))
+      empty_grid.add(Location.new(1, 0))
+      empty_grid.add(Location.new(-1, 0))
       empty_grid.germinal_locations.size.must_equal 4
     end
   end
