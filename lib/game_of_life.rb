@@ -14,7 +14,7 @@ class GOL
   end
 
   def remove(living_cell_location)
-    @world.remove(living_cell_location)
+    @world.delete(living_cell_location)
   end
 
   def tick

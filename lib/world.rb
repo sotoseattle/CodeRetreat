@@ -1,27 +1,10 @@
 require 'set'
 
-class World
-  attr_accessor :grid
-
-  def initialize
-    @grid = Set.new
-  end
-
-  def add(location)
-    @grid << location
-  end
-
-  def remove(location)
-    @grid.delete(location)
-  end
-
-  def number_of_living_cells
-    @grid.size
-  end
-  alias_method :size, :number_of_living_cells
+class World < Set
+  alias_method :number_of_living_cells, :size
 
   def unsustainable_locations
-    @grid.select { |loc| !survives?(loc) }
+    select { |loc| !survives?(loc) }
   end
 
   def germinal_locations
@@ -32,8 +15,8 @@ class World
 
   def potential_perimeter
     possible_locations = Set.new
-    @grid.each { |loc| possible_locations |= loc.adjacents }
-    possible_locations.subtract @grid
+    each { |loc| possible_locations |= loc.adjacents }
+    possible_locations.subtract self
   end
 
   def fertile?(location)
@@ -45,6 +28,6 @@ class World
   end
 
   def alive_nearby(location)
-    location.adjacents.count { |loc| @grid.include?(loc) }
+    location.adjacents.count { |loc| include?(loc) }
   end
 end

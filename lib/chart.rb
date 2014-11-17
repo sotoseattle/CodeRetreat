@@ -2,7 +2,7 @@ require_relative './location'
 
 class Chart
   def initialize(world = nil)
-    bunch_of_locations = world ? world.grid.to_a : []
+    bunch_of_locations = world ? world.to_a : []
     @locations = Array.new(bunch_of_locations)
     @bottom_left, @top_right = frame
 
