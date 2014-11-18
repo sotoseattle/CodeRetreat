@@ -24,7 +24,7 @@ class World < Set
   end
 
   def survives?(location)
-    alive_nearby(location) == 2 || alive_nearby(location) == 3
+    alive_nearby(location).between?(2, 3)
   end
 
   def alive_nearby(location)

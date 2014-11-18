@@ -5,13 +5,14 @@ Location = Struct.new(:x, :y) do
   alias_method :eql?, :==
 
   def adjacents
-    adj = [x + 1, x, x - 1].product([y - 1, y, y + 1])
-          .map { |coords| Location.new(*coords) }
-    adj.delete self
-    adj
+    perimeter_coordinates.map { |coords| Location.new(*coords) }
   end
 
   protected
+
+  def perimeter_coordinates
+    [x + 1, x, x - 1].product([y - 1, y, y + 1]) - [[x, y]]
+  end
 
   def hash
     to_a.hash

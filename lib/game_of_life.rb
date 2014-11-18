@@ -17,15 +17,20 @@ class GOL
     @world.delete(living_cell_location)
   end
 
+  def visualization
+    Chart.new(@world).to_2d
+  end
+
   def tick
     will_die   = @world.unsustainable_locations
     will_spawn = @world.germinal_locations
-
-    will_die.each   { |cell| remove(cell) }
-    will_spawn.each { |cell| add(cell) }
+    tock(will_die, will_spawn)
   end
 
-  def visualization
-    Chart.new(@world).to_2d
+  private
+
+  def tock(dead_cells, born_cells)
+    dead_cells.each { |cell| remove(cell) }
+    born_cells.each { |cell| add(cell) }
   end
 end
