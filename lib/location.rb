@@ -1,9 +1,4 @@
 Location = Struct.new(:x, :y) do
-  def ==(other)
-    to_a == other.to_a
-  end
-  alias_method :eql?, :==
-
   def adjacents
     perimeter_coordinates.map { |coords| Location.new(*coords) }
   end
